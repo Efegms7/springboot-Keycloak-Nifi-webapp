@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="tr" xmlns:th="http://www.thymeleaf.org" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title layout:fragment="title">NiFi Kontrol</title>
+</head>
+<body>
+<div layout:fragment="section">
+    <h2>NiFi Flow Kontrol Paneli</h2>
+    <div class="nifi-buttons">
+        <button onclick="fetch('/nifi/start', {method:'POST'})" class="veriler-btn">
+            NiFi Flow Başlat
+        </button>
+        <button onclick="fetch('/nifi/stop', {method:'POST'})" class="veriler-btn">
+            NiFi Flow Durdur
+        </button>
+    </div>
+</div>
+</body>
+</html>

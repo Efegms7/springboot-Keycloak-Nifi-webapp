@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="tr" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Kullanıcı Düzenle</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body#animated-bg {
+            font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+            background: url('https://dogruhabercomtr.teimg.com/crop/1280x720/dogruhaber-com-tr/images/2024/1/12/854b6fb2e50b4e0f9da14eb9e72de77c-Argela-teknoloji-dunyasini-Istanbulda-bulusturacak_1539334073.jpg') repeat-x center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+        }
+        .edit-user-container {
+            max-width: 800px;
+            margin: 60px auto;
+            background: rgba(255,255,255,0.18);
+            border-radius: 24px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25);
+            padding: 48px 36px;
+            backdrop-filter: blur(12px);
+            border: 2.5px solid;
+            border-image: linear-gradient(135deg, #667eea 10%, #764ba2 90%) 1;
+            animation: slideDown 1.2s cubic-bezier(0.23, 1, 0.32, 1) 0s 1;
+        }
+        @keyframes slideDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-120px) scale(0.98);
+            }
+            80% {
+                opacity: 1;
+                transform: translateY(12px) scale(1.02);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        .edit-user-container h2 {
+            color: #667eea;
+            font-family: 'Montserrat', 'Roboto', Arial, sans-serif;
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 16px rgba(102, 126, 234, 0.10);
+        }
+        .form-group {
+            margin-bottom: 24px;
+        }
+        .form-group label {
+            display: block;
+            color: #e7e5e5;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="checkbox"] {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            background: rgba(255,255,255,0.1);
+            color: #e7e5e5;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        .form-group input[type="text"]:focus,
+        .form-group input[type="email"]:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        .form-group input[type="checkbox"] {
+            width: auto;
+            margin-right: 8px;
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            margin-top: 32px;
+        }
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+        .btn-secondary {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        .user-info {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .user-info h3 {
+            color: #667eea;
+            margin-bottom: 16px;
+        }
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            color: #e7e5e5;
+        }
+        .info-label {
+            font-weight: 600;
+        }
+        .info-value {
+            color: #667eea;
+        }
+    </style>
+</head>
+<body id="animated-bg">
+<section layout:fragment="section">
+    <div class="edit-user-container">
+        <h2>✏️ Kullanıcı Düzenle</h2>
+        
+        <!-- Kullanıcı Bilgileri -->
+        <div class="user-info" th:if="${targetUser}">
+            <h3>📋 Mevcut Bilgiler</h3>
+            <div class="info-row">
+                <span class="info-label">Kullanıcı ID:</span>
+                <span class="info-value" th:text="${targetUser.id}">ID</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Kullanıcı Adı:</span>
+                <span class="info-value" th:text="${targetUser.username}">username</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">E-posta:</span>
+                <span class="info-value" th:text="${targetUser.email}">email</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Ad Soyad:</span>
+                <span class="info-value" th:text="${targetUser.firstName + ' ' + targetUser.lastName}">Ad Soyad</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Durum:</span>
+                <span class="info-value" th:text="${targetUser.enabled != null && targetUser.enabled ? '✅ Aktif' : '❌ Pasif'}">Durum</span>
+            </div>
+        </div>
+        
+        <!-- Düzenleme Formu -->
+        <form th:action="@{/user-management/edit/{userId}(userId=${targetUser.id})}" method="post">
+            <div class="form-group">
+                <label for="username">👤 Kullanıcı Adı</label>
+                <input type="text" id="username" name="username" 
+                       th:value="${targetUser.username}" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">📧 E-posta</label>
+                <input type="email" id="email" name="email" 
+                       th:value="${targetUser.email}" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="firstName">👤 Ad</label>
+                <input type="text" id="firstName" name="firstName" 
+                       th:value="${targetUser.firstName}" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="lastName">👤 Soyad</label>
+                <input type="text" id="lastName" name="lastName" 
+                       th:value="${targetUser.lastName}" required>
+            </div>
+            
+            <div class="form-group">
+                <div class="checkbox-group">
+                    <input type="checkbox" id="enabled" name="enabled" 
+                           th:checked="${targetUser.enabled != null && targetUser.enabled}">
+                    <label for="enabled">✅ Kullanıcı Aktif</label>
+                </div>
+            </div>
+            
+            <div class="btn-group">
+                <button type="submit" class="btn btn-primary">
+                    💾 Değişiklikleri Kaydet
+                </button>
+                <a href="/user-management" class="btn btn-secondary">
+                    ❌ İptal
+                </a>
+            </div>
+        </form>
+    </div>
+    
+    <script>
+      // Arka planı sağa-sola hareket ettiren JS
+      document.addEventListener('DOMContentLoaded', function() {
+        var body = document.getElementById('animated-bg');
+        var pos = 0;
+        var direction = 1;
+        setInterval(function() {
+          pos += direction * 0.5;
+          if (pos > window.innerWidth) direction = -1;
+          if (pos < 0) direction = 1;
+          body.style.backgroundPositionX = pos + 'px';
+        }, 16);
+      });
+    </script>
+</section>
+</body>
+</html> 

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="tr" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Profil Düzenle</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body#animated-bg {
+            font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+            background: url('https://dogruhabercomtr.teimg.com/crop/1280x720/dogruhaber-com-tr/images/2024/1/12/854b6fb2e50b4e0f9da14eb9e72de77c-Argela-teknoloji-dunyasini-Istanbulda-bulusturacak_1539334073.jpg') repeat-x center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+        }
+        .profile-container {
+            max-width: 600px;
+            margin: 60px auto;
+            background: rgba(255,255,255,0.18);
+            border-radius: 24px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25);
+            padding: 48px 36px;
+            backdrop-filter: blur(12px);
+            border: 2.5px solid;
+            border-image: linear-gradient(135deg, #4ecdc4 10%, #44a08d 90%) 1;
+            animation: slideDown 1.2s cubic-bezier(0.23, 1, 0.32, 1) 0s 1;
+        }
+        @keyframes slideDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-120px) scale(0.98);
+            }
+            80% {
+                opacity: 1;
+                transform: translateY(12px) scale(1.02);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        .profile-container h2 {
+            color: #4ecdc4;
+            font-family: 'Montserrat', 'Roboto', Arial, sans-serif;
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 16px rgba(78, 205, 196, 0.10);
+        }
+        .form-group {
+            margin-bottom: 24px;
+        }
+        .form-group label {
+            display: block;
+            color: #e7e5e5;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="email"] {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            background: rgba(255,255,255,0.1);
+            color: #e7e5e5;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        .form-group input[type="text"]:focus,
+        .form-group input[type="email"]:focus {
+            outline: none;
+            border-color: #4ecdc4;
+            box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.1);
+        }
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            margin-top: 32px;
+        }
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #4ecdc4, #44a08d);
+            color: white;
+        }
+        .btn-secondary {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        .alert {
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .alert-success {
+            background: rgba(78, 205, 196, 0.2);
+            border: 1px solid #4ecdc4;
+            color: #4ecdc4;
+        }
+        .alert-error {
+            background: rgba(255, 107, 107, 0.2);
+            border: 1px solid #ff6b6b;
+            color: #ff6b6b;
+        }
+    </style>
+</head>
+<body id="animated-bg">
+<section layout:fragment="section">
+    <div class="profile-container">
+        <h2>👤 Profil Düzenle</h2>
+        
+        <!-- Başarı/Hata Mesajları -->
+        <div th:if="${success}" class="alert alert-success">
+            <span th:text="${success}">✅ İşlem başarılı!</span>
+        </div>
+        <div th:if="${error}" class="alert alert-error">
+            <span th:text="${error}">❌ Bir hata oluştu!</span>
+        </div>
+        
+        <!-- Profil Düzenleme Formu -->
+        <form th:action="@{/profile/update}" method="post">
+            <div class="form-group">
+                <label for="firstName">👤 Ad</label>
+                <input type="text" id="firstName" name="firstName" 
+                       th:value="${user.firstName != null and user.firstName != '' ? user.firstName : 'Ad bilgisi bulunamadı'}" 
+                       th:placeholder="'Adınızı girin'">
+            </div>
+            
+            <div class="form-group">
+                <label for="lastName">👤 Soyad</label>
+                <input type="text" id="lastName" name="lastName" 
+                       th:value="${user.lastName != null and user.lastName != '' ? user.lastName : 'Soyad bilgisi bulunamadı'}" 
+                       th:placeholder="'Soyadınızı girin'">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">📧 E-posta</label>
+                <input type="text" id="email" name="email" 
+                       th:value="${user.email != null and user.email != '' ? user.email : 'E-posta bilgisi bulunamadı'}" 
+                       th:placeholder="'E-posta adresinizi girin'">
+            </div>
+            
+            <div class="btn-group">
+                <button type="submit" class="btn btn-primary">
+                    💾 Değişiklikleri Kaydet
+                </button>
+                <a href="/dashboard" class="btn btn-secondary">
+                    ❌ İptal
+                </a>
+            </div>
+        </form>
+    </div>
+    
+    <script>
+      // Arka planı sağa-sola hareket ettiren JS
+      document.addEventListener('DOMContentLoaded', function() {
+        var body = document.getElementById('animated-bg');
+        var pos = 0;
+        var direction = 1;
+        setInterval(function() {
+          pos += direction * 0.5;
+          if (pos > window.innerWidth) direction = -1;
+          if (pos < 0) direction = 1;
+          body.style.backgroundPositionX = pos + 'px';
+        }, 16);
+      });
+    </script>
+</section>
+</body>
+</html> 

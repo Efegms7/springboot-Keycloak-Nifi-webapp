@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="tr" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<head>
+    <title>Hakkımızda</title>
+</head>
+<body>
+<section layout:fragment="section">
+    <main class="about-main">
+        <section class="about-hero">
+            <h1>Hakkımızda</h1>
+            <p class="about-intro">
+                Argela, iletişim teknolojilerinde yenilikçi çözümler ve projeler geliştiren, sektöre değer katan bir teknoloji şirketidir.
+            </p>
+        </section>
+        <section class="about-cards-modern">
+            <div class="about-info-card enhanced">
+                <div class="about-icon-bg"><span class="about-icon">🚀</span></div>
+                <h2>Misyonumuz</h2>
+                <p>Argela olarak, yenilikçi haberleşme teknolojileri geliştirerek Türkiye’nin ve dünyanın dijital dönüşümüne liderlik etmek için çalışıyoruz.
+                    Savunma, telekomünikasyon ve ileri ağ çözümleri alanlarında, yüksek katma değerli ürün ve hizmetler sunarak; müşterilerimize güvenilir, esnek ve geleceğe hazır çözümler sağlamayı misyon ediniyoruz.
+                    Milli ve yerli teknolojilerle 5G ve ötesi iletişim altyapılarında global ölçekte rekabet eden sistemler geliştiriyoruz.</p>
+            </div>
+            <div class="about-info-card enhanced">
+                <div class="about-icon-bg"><span class="about-icon">🌍</span></div>
+                <h2>Vizyonumuz</h2>
+                <p>Geleceğin haberleşme ve savunma teknolojilerine yön veren, yenilikçi ve öncü bir Ar-Ge şirketi olmak.
+                    Milli ve yerli çözümlerle Türkiye’yi küresel teknoloji liginde söz sahibi ülkelerden biri haline getirmek.</p>
+            </div>
+            <div class="about-info-card enhanced">
+                <div class="about-icon-bg"><span class="about-icon">💡</span></div>
+                <h2>Değerlerimiz</h2>
+                <p>Yenilikçilik, güven, kalite ve sürdürülebilirlik ilkeleriyle hareket etmek.</p>
+            </div>
+        </section>
+        <section class="about-contact">
+            <h3>İletişim</h3>
+            <p><strong>Adres:</strong> İTÜ ARI Teknokent, İstanbul</p>
+            <p><strong>Web:</strong> <a href="https://www.argela.com.tr" target="_blank">www.argela.com.tr</a></p>
+        </section>
+    </main>
+    <style>
+        body#animated-bg {
+            background:
+                linear-gradient(120deg, rgba(21,101,192,0.45) 0%, rgba(255,64,129,0.35) 100%),
+                linear-gradient(rgba(255,255,255,0.80), rgba(255,255,255,0.80)),
+                url('https://www.htk.org.tr/content/upload/companies/argela-1548-20221215114616.jpg') center center no-repeat;
+            background-size: cover;
+        }
+        .about-main {
+            max-width: 900px;
+            margin: 180px auto 0 auto;
+            padding: 0 16px 48px 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: none;
+        }
+        .about-hero {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .about-hero h1 {
+            font-size: 2.8rem;
+            font-family: 'Montserrat', 'Roboto', Arial, sans-serif;
+            font-weight: 900;
+            color: #2a2a5a;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+        .about-intro {
+            font-size: 1.25rem;
+            color: #444;
+            font-weight: 500;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .about-cards-modern {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 48px 36px;
+            justify-content: center;
+            margin-bottom: 56px;
+            margin-top: 16px;
+        }
+        .about-info-card {
+            background: rgba(255,255,255,0.45);
+            border-radius: 18px;
+            box-shadow: 0 4px 24px 0 rgba(31, 38, 135, 0.10);
+            padding: 28px 20px 22px 20px;
+            width: 210px;
+            min-height: 170px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin: 0 8px;
+        }
+        .about-info-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.16);
+        }
+        .about-icon {
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+        }
+        .about-info-card h2 {
+            font-size: 1.1rem;
+            color: #3a3a7a;
+            font-family: 'Montserrat', 'Roboto', Arial, sans-serif;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .about-info-card p {
+            color: #444;
+            font-size: 0.98rem;
+            font-weight: 500;
+        }
+        .about-contact {
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px 0 rgba(31, 38, 135, 0.07);
+            padding: 28px 24px;
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+        .about-contact h3 {
+            color: #2a2a5a;
+            font-size: 1.2rem;
+            font-family: 'Montserrat', 'Roboto', Arial, sans-serif;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .about-contact a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .about-contact a:hover {
+            text-decoration: underline;
+        }
+        .about-info-card.enhanced {
+            background: linear-gradient(135deg, #e0e7ff 0%, #f0f4ff 100%);
+            border-radius: 22px;
+            box-shadow: 0 8px 32px 0 rgba(102,126,234,0.18), 0 2px 8px 0 rgba(31,38,135,0.08);
+            padding: 36px 24px 28px 24px;
+            width: 250px;
+            min-height: 210px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.25s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.25s;
+            margin: 0 12px;
+            position: relative;
+            overflow: hidden;
+        }
+        .about-info-card.enhanced:hover {
+            transform: translateY(-12px) scale(1.045);
+            box-shadow: 0 16px 48px 0 rgba(102,126,234,0.22), 0 4px 16px 0 rgba(31,38,135,0.12);
+        }
+        .about-icon-bg {
+            background: linear-gradient(135deg, #667eea 40%, #8ec5fc 100%);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+            box-shadow: 0 4px 16px rgba(102,126,234,0.18);
+        }
+        .about-info-card.enhanced h2 {
+            font-size: 1.25rem;
+            color: #2a2a5a;
+            font-family: 'Montserrat', 'Roboto', Arial, sans-serif;
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: 1.2px;
+            text-shadow: 0 2px 8px rgba(102,126,234,0.08);
+        }
+        .about-info-card.enhanced p {
+            color: #3a3a7a;
+            font-size: 1.05rem;
+            font-weight: 500;
+            line-height: 1.7;
+            margin-bottom: 0;
+        }
+        .about-icon {
+            font-size: 2.3rem;
+            color: #fff;
+        }
+        .about-projects-services {
+            max-width: 900px;
+            margin: 0 auto 60px auto;
+            padding: 32px 16px 0 16px;
+            background: rgba(255,255,255,0.70);
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(102,126,234,0.10);
+        }
+        .about-projects-services h2 {
+            text-align: center;
+            font-size: 2rem;
+            font-family: 'Montserrat', 'Roboto', Arial, sans-serif;
+            font-weight: 800;
+            color: #3a3a7a;
+            margin-bottom: 32px;
+        }
+        #project-accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .project-item {
+            background: linear-gradient(90deg, #e0e7ff 0%, #f0f4ff 100%);
+            border-radius: 14px;
+            box-shadow: 0 2px 12px 0 rgba(102,126,234,0.08);
+            padding: 0;
+            overflow: hidden;
+            transition: box-shadow 0.2s;
+        }
+        .project-header {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 18px 24px;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #2a2a5a;
+            font-family: 'Montserrat', 'Roboto', Arial, sans-serif;
+            background: none;
+            border: none;
+            outline: none;
+            transition: background 0.2s;
+        }
+        .project-header:hover {
+            background: #e3eaff;
+        }
+        .project-arrow {
+            margin-right: 16px;
+            font-size: 1.2rem;
+            transition: transform 0.2s;
+        }
+        .project-item.open .project-arrow {
+            transform: rotate(90deg);
+        }
+        .project-content {
+            max-height: 0;
+            overflow: hidden;
+            background: #f8faff;
+            padding: 0 24px;
+            font-size: 1rem;
+            color: #444;
+            font-family: 'Roboto', Arial, sans-serif;
+            transition: max-height 0.35s cubic-bezier(0.23, 1, 0.32, 1), padding 0.2s;
+        }
+        .project-item.open .project-content {
+            padding: 16px 24px 24px 24px;
+            max-height: 300px;
+        }
+        .projects-toggle-btn {
+            display: block;
+            margin: 40px auto 0 auto;
+            padding: 14px 36px;
+            background: linear-gradient(90deg, #667eea 0%, #8ec5fc 100%);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.15rem;
+            font-family: 'Montserrat', 'Roboto', Arial, sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(102,126,234,0.12);
+            transition: background 0.2s, box-shadow 0.2s;
+        }
+        .projects-toggle-btn:hover {
+            background: linear-gradient(90deg, #5a67d8 0%, #7faaff 100%);
+            box-shadow: 0 8px 32px rgba(102,126,234,0.18);
+        }
+        @media (max-width: 900px) {
+            .about-cards-modern {
+                flex-direction: column;
+                gap: 24px;
+                align-items: center;
+            }
+            .about-info-card {
+                width: 100%;
+                max-width: 340px;
+            }
+            .about-info-card.enhanced {
+                width: 100%;
+                max-width: 340px;
+            }
+            .about-projects-services {
+                max-width: 100%;
+                padding: 18px 4px 0 4px;
+            }
+        }
+    </style>
+    <script>
+        // Scroll reveal animation for cards
+        function revealCards() {
+            var reveals = document.querySelectorAll('.about-card.reveal');
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 80;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('visible');
+                }
+            }
+        }
+        window.addEventListener('scroll', revealCards);
+        window.addEventListener('DOMContentLoaded', revealCards);
+
+        // Argela projeleri örnek veri
+        const projects = [
+            { title: "5G Çekirdek Şebeke Projesi", desc: "Türkiye'nin ilk yerli ve milli 5G çekirdek şebeke altyapısı geliştirilmiştir. Yüksek performans, güvenlik ve esneklik sunar." },
+            { title: "Ulak Baz İstasyonu", desc: "Yerli baz istasyonu projesi ile Türkiye'nin iletişim altyapısında dışa bağımlılığı azaltılmıştır." },
+            { title: "Milat Siber Güvenlik Platformu", desc: "Kritik altyapılar için gelişmiş siber güvenlik çözümleri sunar." },
+            { title: "ARGELA SDN/NFV Çözümleri", desc: "Yazılım tabanlı ağ ve sanallaştırma teknolojileriyle esnek ve yönetilebilir ağ altyapıları sağlar." },
+            { title: "Tactical Communication Systems", desc: "Savunma sanayii için güvenli ve dayanıklı taktik iletişim sistemleri geliştirilmiştir." },
+            { title: "Argela Analytics Platform", desc: "Büyük veri analitiği ve yapay zeka destekli ağ yönetimi çözümleri sunar." },
+            { title: "VoLTE/VoWiFi Çözümleri", desc: "Yüksek kaliteli ses ve veri iletişimi için yeni nesil çözümler." },
+            { title: "NetAstra", desc: "Ağ performansını izleme ve optimize etme platformu." },
+            { title: "Femtocell Çözümleri", desc: "Kapsama alanı artırıcı küçük hücre teknolojileri." },
+            { title: "Diğer Projeler", desc: "Argela'nın Ar-Ge ve inovasyon odaklı birçok projesi bulunmaktadır." }
+        ];
+        function renderProjectsAccordion() {
+            const container = document.getElementById('project-accordion');
+            container.innerHTML = '';
+            projects.forEach((project, idx) => {
+                const item = document.createElement('div');
+                item.className = 'project-item';
+                item.innerHTML = `
+                    <div class="project-header"><span class="project-arrow">▶</span> ${project.title}</div>
+                    <div class="project-content">${project.desc}</div>
+                `;
+                item.querySelector('.project-header').onclick = function() {
+                    // Diğer açık olanları kapat
+                    document.querySelectorAll('.project-item.open').forEach(el => {
+                        if (el !== item) el.classList.remove('open');
+                    });
+                    item.classList.toggle('open');
+                };
+                container.appendChild(item);
+            });
+        }
+        window.addEventListener('DOMContentLoaded', () => {
+            renderProjectsAccordion();
+        });
+
+        // Projeler ve Hizmetler toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleBtn = document.getElementById('toggle-projects-btn');
+            const projectsSection = document.getElementById('about-projects-services');
+            toggleBtn.addEventListener('click', function() {
+                if (projectsSection.style.display === 'none' || projectsSection.style.display === '') {
+                    projectsSection.style.display = 'block';
+                } else {
+                    projectsSection.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</section>
+</body>
+</html> 

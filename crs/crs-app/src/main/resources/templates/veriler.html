@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="tr" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Keycloak Verileri - Argela</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            color: white;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .veriler-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .veriler-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .veriler-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        .veriler-icon {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .veriler-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        .veriler-value {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .veriler-description {
+            color: #666;
+            text-align: center;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .back-button {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .back-button:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+        
+        .no-data {
+            text-align: center;
+            color: white;
+            font-size: 1.2rem;
+            padding: 50px;
+        }
+        
+        .loading {
+            text-align: center;
+            color: white;
+            font-size: 1.2rem;
+            padding: 50px;
+        }
+        
+        @media (max-width: 768px) {
+            .veriler-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔑 Keycloak Verileri</h1>
+            <p>Keycloak'tan gelen güncel permission ve resource bilgileri</p>
+        </div>
+        
+        <!-- Veriler Grid -->
+        <div th:if="${allPermissionResults != null and allPermissionResults.jwtPermissionsCount != null}" class="veriler-grid">
+            <!-- JWT Permissions -->
+            <div class="veriler-card">
+                <div class="veriler-icon">🔐</div>
+                <div class="veriler-title">JWT Permissions</div>
+                <div class="veriler-value" th:text="${allPermissionResults.jwtPermissionsCount != null ? allPermissionResults.jwtPermissionsCount : '0'}">0</div>
+                <div class="veriler-description">JWT token'da bulunan permission sayısı</div>
+            </div>
+            
+            <!-- Resources -->
+            <div class="veriler-card">
+                <div class="veriler-icon">🏗️</div>
+                <div class="veriler-title">Resources</div>
+                <div class="veriler-value" th:text="${allPermissionResults.resourcesCount != null ? allPermissionResults.resourcesCount : '0'}">0</div>
+                <div class="veriler-description">Keycloak'ta tanımlı resource sayısı</div>
+            </div>
+            
+            <!-- Scopes -->
+            <div class="veriler-card">
+                <div class="veriler-icon">🎯</div>
+                <div class="veriler-title">Scopes</div>
+                <div class="veriler-value" th:text="${allPermissionResults.scopesCount != null ? allPermissionResults.scopesCount : '0'}">0</div>
+                <div class="veriler-description">Authorization scope sayısı</div>
+            </div>
+            
+            <!-- Policies -->
+            <div class="veriler-card">
+                <div class="veriler-icon">🔒</div>
+                <div class="veriler-title">Policies</div>
+                <div class="veriler-value" th:text="${allPermissionResults.policiesCount != null ? allPermissionResults.policiesCount : '0'}">0</div>
+                <div class="veriler-description">Access control policy sayısı</div>
+            </div>
+            
+            <!-- Resource Permissions -->
+            <div class="veriler-card">
+                <div class="veriler-icon">✅</div>
+                <div class="veriler-title">Resource Permissions</div>
+                <div class="veriler-value" th:text="${allPermissionResults.resourcePermissionsCount != null ? allPermissionResults.resourcePermissionsCount : '0'}">0</div>
+                <div class="veriler-description">Resource bazlı permission sayısı</div>
+            </div>
+        </div>
+        
+        <!-- Veri Yok -->
+        <div th:unless="${allPermissionResults != null}" class="no-data">
+            <h2>📊 Veri Bulunamadı</h2>
+            <p>Keycloak'tan henüz veri gelmemiş veya session süresi dolmuş.</p>
+            <p>Lütfen tekrar giriş yapın.</p>
+        </div>
+        
+        <!-- Geri Dön Butonu -->
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="/" class="back-button">🏠 Ana Sayfaya Dön</a>
+        </div>
+    </div>
+</body>
+</html>

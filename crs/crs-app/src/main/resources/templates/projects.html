@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="tr" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<head>
+    <title>Projeler ve Hizmetler - Argela</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+<section layout:fragment="section">
+    <main class="projects-main">
+        <div class="projects-header">
+            <h1 class="projects-title">🚀 Projeler ve Hizmetler</h1>
+            <p class="projects-subtitle">Argela'nın yenilikçi teknoloji projeleri ve çözümleri</p>
+        </div>
+        
+        <div class="projects-grid">
+            <!-- 5G Çekirdek Şebeke Projesi -->
+            <div class="project-card">
+                <div class="project-image-container">
+                    <img src="https://www.donanimhaber.com/cache-v2/?t=20240222155802&width=-1&text=0&path=https://www.donanimhaber.com/images/images/haber/174462/src/turkcell-5-5g-yi-test-etti-10-gigabit-hiza-ulasildi174462_0.jpg" 
+                         alt="5G Çekirdek Şebeke Projesi"
+                         class="project-image">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">5G Çekirdek Şebeke Projesi</h3>
+                    <p class="project-description">Türkiye'nin ilk yerli ve milli 5G çekirdek şebeke altyapısı geliştirilmiştir. Yüksek performans, güvenlik ve esneklik sunar.</p>
+                    <div class="project-actions">
+                        <button class="project-details-btn" onclick="showProjectDetails(this)">
+                            📋 Detayları Gör
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ulak Baz İstasyonu -->
+            <div class="project-card">
+                <div class="project-image-container">
+                    <img src="https://www.argela.com.tr/img/3cd61249-fbc9-4ac6-bf1e-6aa2177597c9/ubs-units.jpg?fm=jpg&q=70&fit=max&crop=620%2C410%2C0%2C0&maxW=640&w=640" 
+                         alt="Ulak Baz İstasyonu"
+                         class="project-image">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Ulak Baz İstasyonu</h3>
+                    <p class="project-description">Yerli baz istasyonu projesi ile Türkiye'nin iletişim altyapısında dışa bağımlılığı azaltılmıştır.</p>
+                    <div class="project-actions">
+                        <button class="project-details-btn" onclick="showProjectDetails(this)">
+                            📋 Detayları Gör
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Milat Siber Güvenlik Platformu -->
+            <div class="project-card">
+                <div class="project-image-container">
+                    <img src="https://www.argela.com.tr/img/d67320de-b40e-4ca4-88a4-e355741f0e38/milat-managementorchestration-eng.jpg?fm=jpg&q=70&fit=max&crop=%2C%2C%2C&maxW=640&w=640" 
+                         alt="Milat Siber Güvenlik Platformu"
+                         class="project-image">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Milat Siber Güvenlik Platformu</h3>
+                    <p class="project-description">Kritik altyapılar için gelişmiş siber güvenlik çözümleri sunar.</p>
+                    <div class="project-actions">
+                        <button class="project-details-btn" onclick="showProjectDetails(this)">
+                            📋 Detayları Gör
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARGELA SDN/NFV Çözümleri -->
+            <div class="project-card">
+                <div class="project-image-container">
+                    <img src="https://www.argela.com.tr/img/d194f80c-05e5-4bed-8bc4-9340b7a1384e/smart-enterprise-network-diagram.jpeg?fm=jpg&q=70&fit=max&crop=605%2C385%2C0%2C0&maxW=640&w=640" 
+                         alt="ARGELA SDN/NFV Çözümleri"
+                         class="project-image">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">ARGELA SDN/NFV Çözümleri</h3>
+                    <p class="project-description">Yazılım tabanlı ağ ve sanallaştırma teknolojileriyle esnek ve yönetilebilir ağ altyapıları sağlar.</p>
+                    <div class="project-actions">
+                        <button class="project-details-btn" onclick="showProjectDetails(this)">
+                            📋 Detayları Gör
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tactical Communication Systems -->
+            <div class="project-card">
+                <div class="project-image-container">
+                    <img src="https://res.cloudinary.com/tbmg/c_scale,w_800,f_auto,q_auto/v1519382068/ctf/entries/2011/20110518103755_PRO.jpg" 
+                         alt="Tactical Communication Systems"
+                         class="project-image">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Tactical Communication Systems</h3>
+                    <p class="project-description">Savunma sanayii için güvenli ve dayanıklı taktik iletişim sistemleri geliştirilmiştir.</p>
+                    <div class="project-actions">
+                        <button class="project-details-btn" onclick="showProjectDetails(this)">
+                            📋 Detayları Gör
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Argela Analytics Platform -->
+            <div class="project-card">
+                <div class="project-image-container">
+                    <img src="https://www.researchgate.net/publication/4003319/figure/fig1/AS:394697127284740@1471114536551/Tactical-communications-systems.png" 
+                         alt="Argela Analytics Platform"
+                         class="project-image">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Argela Analytics Platform</h3>
+                    <p class="project-description">Büyük veri analitiği ve yapay zeka destekli ağ yönetimi çözümleri sunar.</p>
+                    <div class="project-actions">
+                        <button class="project-details-btn" onclick="showProjectDetails(this)">
+                            📋 Detayları Gör
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VoLTE/VoWiFi Çözümleri -->
+            <div class="project-card">
+                <div class="project-image-container">
+                    <img src="https://www.researchgate.net/publication/303848670/figure/fig2/AS:962185165561866@1606414228234/Current-VoLTE-and-VoWiFi-architecture.gif" 
+                         alt="VoLTE/VoWiFi Çözümleri"
+                         class="project-image">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">VoLTE/VoWiFi Çözümleri</h3>
+                    <p class="project-description">Yüksek kaliteli ses ve veri iletişimi için yeni nesil çözümler.</p>
+                    <div class="project-actions">
+                        <button class="project-details-btn" onclick="showProjectDetails(this)">
+                            📋 Detayları Gör
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NetAstra -->
+            <div class="project-card">
+                <div class="project-image-container">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfcDY7fi2X5f8mH7kg01BL7nBop-1Qs4uFWw&s" 
+                         alt="NetAstra"
+                         class="project-image">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">NetAstra</h3>
+                    <p class="project-description">Ağ performansını izleme ve optimize etme platformu.</p>
+                    <div class="project-actions">
+                        <button class="project-details-btn" onclick="showProjectDetails(this)">
+                            📋 Detayları Gör
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Femtocell Çözümleri -->
+            <div class="project-card">
+                <div class="project-image-container">
+                    <img src="https://www.mdpi.com/sensors/sensors-21-04843/article_deploy/html/images/sensors-21-04843-g001.png" 
+                         alt="Femtocell Çözümleri"
+                         class="project-image">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Femtocell Çözümleri</h3>
+                    <p class="project-description">Kapsama alanı artırıcı küçük hücre teknolojileri.</p>
+                    <div class="project-actions">
+                        <button class="project-details-btn" onclick="showProjectDetails(this)">
+                            📋 Detayları Gör
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Diğer Projeler -->
+            <div class="project-card">
+                <div class="project-image-container">
+                    <img src="https://via.placeholder.com/400x250/667eea/ffffff?text=Diğer+Projeler" 
+                         alt="Diğer Projeler"
+                         class="project-image">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Diğer Projeler</h3>
+                    <p class="project-description">Argela'nın Ar-Ge ve inovasyon odaklı birçok projesi bulunmaktadır.</p>
+                    <div class="project-actions">
+                        <button class="project-details-btn" onclick="showProjectDetails(this)">
+                            📋 Detayları Gör
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Proje Detay Modal -->
+        <div id="projectModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id="modalContent"></div>
+            </div>
+        </div>
+    </main>
+    
+    <style>
+        .projects-main {
+            max-width: 1200px;
+            margin: 80px auto 0 auto;
+            padding: 0 20px 48px 20px;
+            background: none;
+        }
+        
+        .projects-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        
+        .projects-title {
+            font-size: 2.8rem;
+            font-family: 'Montserrat', 'Roboto', Arial, sans-serif;
+            font-weight: 900;
+            color: #2a2a5a;
+            margin-bottom: 16px;
+            letter-spacing: 1.2px;
+            text-shadow: 0 4px 16px rgba(102,126,234,0.1);
+        }
+        
+        .projects-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 32px;
+            width: 100%;
+        }
+        
+        .project-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.15);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            backdrop-filter: blur(10px);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 48px rgba(102, 126, 234, 0.25);
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+        
+        .project-image-container {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+        
+        .project-content {
+            padding: 24px;
+        }
+        
+        .project-title {
+            font-size: 1.4rem;
+            font-family: 'Montserrat', 'Roboto', Arial, sans-serif;
+            font-weight: 700;
+            color: #2a2a5a;
+            margin: 0 0 16px 0;
+            line-height: 1.3;
+        }
+        
+        .project-description {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.6;
+            margin: 0 0 20px 0;
+            font-family: 'Roboto', Arial, sans-serif;
+        }
+        
+        .project-actions {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .project-details-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Roboto', Arial, sans-serif;
+        }
+        
+        .project-details-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 0;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            padding: 20px;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: #667eea;
+        }
+        
+        #modalContent {
+            padding: 0 20px 20px 20px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            
+            .projects-title {
+                font-size: 2.2rem;
+            }
+            
+            .project-card {
+                margin: 0 10px;
+            }
+        }
+    </style>
+    
+    <script>
+        function showProjectDetails(button) {
+            const card = button.closest('.project-card');
+            const title = card.querySelector('.project-title').textContent;
+            const description = card.querySelector('.project-description').textContent;
+            const image = card.querySelector('.project-image').src;
+            
+            const modal = document.getElementById('projectModal');
+            const modalContent = document.getElementById('modalContent');
+            
+            modalContent.innerHTML = `
+                <div style="text-align: center; padding: 20px 0;">
+                    <img src="${image}" alt="${title}" style="width: 100%; max-width: 400px; border-radius: 12px; margin-bottom: 20px;">
+                    <h2 style="color: #2a2a5a; margin-bottom: 16px;">${title}</h2>
+                    <p style="color: #555; line-height: 1.6; font-size: 1.1rem;">${description}</p>
+                </div>
+            `;
+            
+            modal.style.display = 'block';
+        }
+        
+        // Modal kapatma
+        document.querySelector('.close').onclick = function() {
+            document.getElementById('projectModal').style.display = 'none';
+        }
+        
+        window.onclick = function(event) {
+            const modal = document.getElementById('projectModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</section>
+</body>
+</html> 
